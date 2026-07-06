@@ -1,10 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 dotenv.config();
 
 const app = express();
+
+app.use(cors({
+    origin: [
+        "https://storied-fox-306a29.netlify.app",
+        "http://localhost:3000"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+}));
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
